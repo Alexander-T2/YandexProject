@@ -12,6 +12,7 @@ class Level:
     def setup_level(self, layout):
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
+        self.door = pygame.sprite.GroupSingle()
         for row_index, row in enumerate(layout):
             for col_index, cell in enumerate(row):
                 x = col_index * tile_size
@@ -20,6 +21,9 @@ class Level:
                 if cell == 'X':
                     tile = Tile((x, y), tile_size)
                     self.tiles.add(tile)
+                if cell == 'D':
+                    door = Tile((x, y), tile_size)
+                    self.door.add(door)
                 if cell == 'P':
                     player_sprite = Player((x, y))
                     self.player.add(player_sprite)
@@ -45,7 +49,7 @@ class Level:
 
         for sprite in self.tiles.sprites():
             if sprite.rect.colliderect(player.rect):
-                if player.direction.x > 0:
+                if player.direction.x < 0:
                     player.rect.left = sprite.rect.right
                 elif player.direction.x > 0:
                     player.rect.right = sprite.rect.left
@@ -63,10 +67,11 @@ class Level:
                     player.rect.top = sprite.rect.bottom
                     player.direction.y = 0
 
-
     def run(self):
         self.tiles.update(self.world_shift)
         self.tiles.draw(self.display_surface)
+        self.door.update(self.world_shift)
+        self.door.draw(self.display_surface)
         self.scroll_x()
 
         self.player.update()

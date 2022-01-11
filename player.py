@@ -6,7 +6,7 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, pos):
         super().__init__()
         self.import_character_assets()
-        self.frame_index = 0 # for animation
+        self.frame_index = 0  # for animation
         self.animation_speed = 0.15
         self.image = pygame.Surface((32, 64))
         self.image.fill('red')
