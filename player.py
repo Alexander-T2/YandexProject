@@ -1,4 +1,5 @@
 import pygame
+from settings import current_level
 from support import import_folder
 
 
@@ -14,8 +15,9 @@ class Player(pygame.sprite.Sprite):
 
         self.direction = pygame.math.Vector2(0, 0)
         self.speed = 6
-        self.gravity = 0.8
-        self.jump_height = -20
+        self.gravity = 1
+        self.jump_height = -30
+        self.status = 'idle'
 
     def import_character_assets(self):
         character_path = 'graphics/character/'
@@ -24,6 +26,26 @@ class Player(pygame.sprite.Sprite):
         for animation in self.animations.keys():
             full_path = character_path + animation
             self.animations[animation] = import_folder(full_path)
+
+    def animate(self):
+        animation = self.animations[self.status]
+
+        self.frame_index += self.animation_speed
+        if self.frame_index >= len(animation):
+            self.frame_index = 0
+
+        self.image = animation[int(self.frame_index)]
+
+    def get_status(self):
+        if self.direction.y < 0:
+            self.status = 'jump'
+        elif self.direction.y > 0:
+            self.status = 'fall'
+        else:
+            if self.direction.x != 0:
+                self.status = 'run'
+            else:
+                self.status = 'idle'
 
     def get_input(self):
         keys = pygame.key.get_pressed()
@@ -45,7 +67,35 @@ class Player(pygame.sprite.Sprite):
     def jump(self):
         self.direction.y = self.jump_height
 
-    def update(self):
-        self.get_input()
+    def update(self, tile_sprites, door_sprites):
+        self.get_input()  # Menu work starts here
+        self.horizontal_movement_collision(tile_sprites)
+        self.vertical_movement_collision(tile_sprites)
+        self.door_touched(door_sprites)
+
+    def horizontal_movement_collision(self, tile_sprites):
         self.rect.x += self.direction.x * self.speed
+
+        for sprite in tile_sprites:
+            if sprite.rect.colliderect(self.rect):
+                if self.direction.x < 0:
+                    self.rect.left = sprite.rect.right
+                elif self.direction.x > 0:
+                    self.rect.right = sprite.rect.left
+
+    def vertical_movement_collision(self, tile_sprites):
         self.apply_gravity()
+        for sprite in tile_sprites:
+            if sprite.rect.colliderect(self.rect):
+                if self.direction.y > 0:
+                    self.rect.bottom = sprite.rect.top
+                    self.direction.y = 0
+                    self.jump_counter = 1
+                elif self.direction.y < 0:
+                    self.rect.top = sprite.rect.bottom
+                    self.direction.y = 0
+
+    def door_touched(self, door_sprites):
+        for sprite in door_sprites:
+            if sprite.rect.colliderect(self.rect):
+                pass  # смена уровня

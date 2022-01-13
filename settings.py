@@ -1,27 +1,28 @@
+
 level_map1 = [
-    'X                                  ',
-    '               X                   ',
-    '                                   ',
-    '                      X            ',
-    '                      X            ',
-    '                      X      X     ',
-    '                P     XXX          ',
-    '                XX                 ',
-    '                                   ',
-    '                                   ',
-    '                                   ',
-    'X           X                     D',
-    'X           X                     X',
+    'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    'X              X                  X',
     'X                                 X',
+    'X                     X           X',
+    'X                     X           X',
+    'X                     X      X    X',
+    'X               P     XXX         X',
+    'X               XX                X',
+    'X                                 X',
+    'X                                 X',
+    'X                                 X',
+    'X           X           XXXXXXXXXXX',
+    'X           X             X        ',
+    'X                                 D',
     'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX']
 
 level_map2 = [
     'X                                  ',
     '               X                   ',
     '                                   ',
-    '                      X            ',
-    '                      X            ',
-    '                      X      X     ',
+    '                                   ',
+    '                                   ',
+    '                             X     ',
     '                      XXX          ',
     '                XX                 ',
     '                                   ',
@@ -34,4 +35,6 @@ level_map2 = [
 
 tile_size = 64
 screen_width = 1800
-screen_height = len(level_map1) * tile_size
+current_level = 1
+levels = {1: level_map1, 2: level_map2}
+screen_height = len(levels[current_level]) * tile_size
