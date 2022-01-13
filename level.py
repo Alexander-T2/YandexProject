@@ -1,5 +1,6 @@
 import pygame
 from tiles import Tile
+from door import Door
 from settings import tile_size, screen_width
 from player import Player
 
@@ -22,7 +23,7 @@ class Level:
                     tile = Tile((x, y), tile_size)
                     self.tiles.add(tile)
                 if cell == 'D':
-                    door = Tile((x, y), tile_size)
+                    door = Door((x, y - 20), tile_size)
                     self.door.add(door)
                 if cell == 'P':
                     player_sprite = Player((x, y))
