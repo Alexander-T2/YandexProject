@@ -6,14 +6,14 @@ level_map1 = [
     'X                     X           X',
     'X                     X           X',
     'X                     X      X    X',
-    'X               P     XXX         X',
+    'X               PD    XXX         X',
     'X               XX                X',
     'X                                 X',
     'X                                 X',
     'X                                 X',
     'X           X           XXXXXXXXXXX',
     'X           X             X        ',
-    'X                                 D',
+    'X                                  ',
     'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX']
 
 level_map2 = [
@@ -35,6 +35,7 @@ level_map2 = [
 
 tile_size = 64
 screen_width = 1800
+global current_level
 current_level = 1
 levels = {1: level_map1, 2: level_map2}
 screen_height = len(levels[current_level]) * tile_size

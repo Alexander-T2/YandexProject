@@ -17,7 +17,6 @@ class Player(pygame.sprite.Sprite):
         self.speed = 6
         self.gravity = 1
         self.jump_height = -30
-        self.status = 'idle'
 
     def import_character_assets(self):
         character_path = 'graphics/character/'
@@ -28,7 +27,7 @@ class Player(pygame.sprite.Sprite):
             self.animations[animation] = import_folder(full_path)
 
     def animate(self):
-        animation = self.animations[self.status]
+        animation = self.animations[self.get_status()]
 
         self.frame_index += self.animation_speed
         if self.frame_index >= len(animation):
@@ -59,6 +58,7 @@ class Player(pygame.sprite.Sprite):
             self.direction.x = -1
         else:
             self.direction.x = 0
+
 
     def apply_gravity(self):
         self.direction.y += self.gravity
@@ -98,4 +98,4 @@ class Player(pygame.sprite.Sprite):
     def door_touched(self, door_sprites):
         for sprite in door_sprites:
             if sprite.rect.colliderect(self.rect):
-                pass  # смена уровня
+                  pass

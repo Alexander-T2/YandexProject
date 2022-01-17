@@ -15,6 +15,8 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+    if current_level > 1:
+        print("aaaaaaaaaaaaaaaaaaaaaa")
     screen.blit(back_ground, (0, 0))
     level.run()
 
