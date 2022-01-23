@@ -1,20 +1,23 @@
 import pygame
 from tiles import Tile
 from door import Door
-from settings import tile_size, screen_width
+from settings import tile_size, screen_width, current_level
 from player import Player
 
 
 class Level:
     def __init__(self, level_data, surface):
+        self.tiles = pygame.sprite.Group()
+        self.player = pygame.sprite.GroupSingle()
+        self.door = pygame.sprite.GroupSingle()
         self.display_surface = surface
         self.setup_level(level_data)
         self.world_shift = 0
 
     def setup_level(self, layout):
-        self.tiles = pygame.sprite.Group()
-        self.player = pygame.sprite.GroupSingle()
-        self.door = pygame.sprite.GroupSingle()
+        self.tiles.empty()
+        self.player.empty()
+        self.door.empty()
         for row_index, row in enumerate(layout):
             for col_index, cell in enumerate(row):
                 x = col_index * tile_size

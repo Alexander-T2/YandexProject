@@ -35,7 +35,6 @@ level_map2 = [
 
 tile_size = 64
 screen_width = 1800
-global current_level
 current_level = 1
 levels = {1: level_map1, 2: level_map2}
 screen_height = len(levels[current_level]) * tile_size

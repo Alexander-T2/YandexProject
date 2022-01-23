@@ -1,5 +1,6 @@
 import pygame
-from settings import current_level
+
+import settings
 from support import import_folder
 
 
@@ -98,4 +99,4 @@ class Player(pygame.sprite.Sprite):
     def door_touched(self, door_sprites):
         for sprite in door_sprites:
             if sprite.rect.colliderect(self.rect):
-                  pass
+                settings.current_level += 1
