@@ -46,13 +46,12 @@ class Level:
 
         if player_x < screen_width / 4 and direction_x < 0:
             self.world_shift = 6
-            player.speed = 0
         elif player_x > screen_width - (screen_width / 4) and direction_x > 0:
             self.world_shift = -6
-            player.speed = 0
+
         else:
             self.world_shift = 0
-            player.speed = 6
+            self.player.speed = 6
 
     def menu_check(self):
         for event in pygame.event.get():
@@ -66,7 +65,12 @@ class Level:
                     else:
                         settings.menu_state = 0
             if event.type == pygame.MOUSEBUTTONUP:
-                print(event.pos)
+                st = event.pos
+                nd = self.mc
+                if (st[0] >= nd[0]+125) and (st[0] <= nd[0] + 375) and (st[1] >= 250) and (st[1]<=330):
+                    settings.menu_state = 0
+                elif (st[0] >= nd[0]+125) and (st[0] <= nd[0] + 375) and (st[1] >= 570) and (st[1]<=650):
+                    sys.exit()
 
     def run(self):
         if settings.menu_state == 0:

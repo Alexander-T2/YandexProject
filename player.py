@@ -74,7 +74,7 @@ class Player(pygame.sprite.Sprite):
         self.door_touched(door_sprites)
 
     def horizontal_movement_collision(self, tile_sprites):
-        self.rect.x += self.direction.x * 12
+        self.rect.x += self.direction.x * self.speed
 
         for sprite in tile_sprites:
             if sprite.rect.colliderect(self.rect):

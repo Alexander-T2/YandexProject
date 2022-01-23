@@ -54,5 +54,6 @@ tile_size = 64
 screen_width = 1800
 current_level = 1
 menu_state = 0
+victory = 0
 levels = {1: level_map1, 2: level_map2, 3: level_map3}
 screen_height = len(levels[current_level]) * tile_size

@@ -13,8 +13,12 @@ actual_level = 1
 
 while True:
     if settings.current_level != actual_level:
-        actual_level = settings.current_level
-        level.setup_level(levels[settings.current_level])
+        if settings.current_level == 4:
+            settings.current_level = 0
+        else:
+            print(settings.current_level)
+            actual_level = settings.current_level
+            level.setup_level(levels[settings.current_level])
     screen.blit(back_ground, (0, 0))
     level.run()
 
