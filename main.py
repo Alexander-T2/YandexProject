@@ -8,7 +8,7 @@ pygame.init()
 screen = pygame.display.set_mode((screen_width, screen_height))
 clock = pygame.time.Clock()
 level = Level(levels[settings.current_level], screen)
-back_ground = pygame.image.load('graphics/background/background.png')
+back_ground = pygame.image.load('graphics/background/background2.png')
 actual_level = 1
 
 while True:
