@@ -1,12 +1,11 @@
 import pygame
-from support import import_folder
 
 
 class Door(pygame.sprite.Sprite):
     def __init__(self, pos, size):
         super().__init__()
         self.frame_index = 0  # for animation
-        door_path = 'graphics/door/door.png'
+        door_path = r'graphics/door/door.png'
         self.image = pygame.image.load(door_path).convert_alpha()
         self.rect = self.image.get_rect(topleft=pos)
 

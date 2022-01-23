@@ -1,6 +1,6 @@
-import pygame, sys
-from settings import *
-import settings
+import pygame
+from settings.settings import *
+from settings import settings
 from level import Level
 
 
@@ -12,10 +12,6 @@ back_ground = pygame.image.load('graphics/background/background.png')
 actual_level = 1
 
 while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
     if settings.current_level != actual_level:
         actual_level = settings.current_level
         level.setup_level(levels[settings.current_level])

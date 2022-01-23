@@ -1,7 +1,6 @@
 import pygame
-
-import settings
-from support import import_folder
+from settings import settings
+from settings.support import import_folder
 
 
 class Player(pygame.sprite.Sprite):
@@ -15,9 +14,9 @@ class Player(pygame.sprite.Sprite):
         self.jump_counter = 1
 
         self.direction = pygame.math.Vector2(0, 0)
-        self.speed = 6
+        self.speed = 100
         self.gravity = 1
-        self.jump_height = -30
+        self.jump_height = -25
 
     def import_character_assets(self):
         character_path = 'graphics/character/'
@@ -48,18 +47,18 @@ class Player(pygame.sprite.Sprite):
                 self.status = 'idle'
 
     def get_input(self):
-        keys = pygame.key.get_pressed()
+        if settings.menu_state != 1:
+            keys = pygame.key.get_pressed()
 
-        if keys[pygame.K_SPACE] and self.jump_counter > 0:
-            self.jump()
-            self.jump_counter -= 1
-        elif keys[pygame.K_RIGHT]:
-            self.direction.x = 1
-        elif keys[pygame.K_LEFT]:
-            self.direction.x = -1
-        else:
-            self.direction.x = 0
-
+            if keys[pygame.K_SPACE] and self.jump_counter > 0:
+                self.jump()
+                self.jump_counter -= 1
+            elif keys[pygame.K_RIGHT]:
+                self.direction.x = 1
+            elif keys[pygame.K_LEFT]:
+                self.direction.x = -1
+            else:
+                self.direction.x = 0
 
     def apply_gravity(self):
         self.direction.y += self.gravity
@@ -75,7 +74,7 @@ class Player(pygame.sprite.Sprite):
         self.door_touched(door_sprites)
 
     def horizontal_movement_collision(self, tile_sprites):
-        self.rect.x += self.direction.x * self.speed
+        self.rect.x += self.direction.x * 12
 
         for sprite in tile_sprites:
             if sprite.rect.colliderect(self.rect):
