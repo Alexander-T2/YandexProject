@@ -13,14 +13,16 @@ actual_level = 1
 
 while True:
     if settings.current_level != actual_level:
-        if settings.current_level == 4:
-            settings.current_level = 0
-        else:
-            print(settings.current_level)
+        if settings.current_level != 4:
             actual_level = settings.current_level
             level.setup_level(levels[settings.current_level])
+        else:
+            settings.current_level = 0
     screen.blit(back_ground, (0, 0))
     level.run()
+    if settings.dead_state == 1:
+        settings.dead_state = 0
+        level.setup_level(levels[settings.current_level])
 
     pygame.display.update()
     clock.tick(60)

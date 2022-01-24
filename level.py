@@ -2,6 +2,8 @@ import pygame
 import sys
 from drawable.tiles import Tile
 from drawable.door import Door
+from drawable.spikes import Spikes
+from drawable.key import Key
 from settings.settings import tile_size, screen_width
 from settings import settings
 from player import Player
@@ -14,6 +16,7 @@ class Level:
         self.player = pygame.sprite.GroupSingle()
         self.door = pygame.sprite.GroupSingle()
         self.spikes = pygame.sprite.Group()
+        self.key = pygame.sprite.GroupSingle()
         self.menu = Menu()
         self.display_surface = surface
         self.setup_level(level_data)
@@ -25,6 +28,8 @@ class Level:
         self.tiles.empty()
         self.player.empty()
         self.door.empty()
+        self.spikes.empty()
+        self.key.empty()
         for row_index, row in enumerate(layout):
             for col_index, cell in enumerate(row):
                 x = col_index * tile_size
@@ -33,9 +38,15 @@ class Level:
                 if cell == 'X':
                     tile = Tile((x, y), tile_size)
                     self.tiles.add(tile)
+                if cell == 'S':
+                    spike = Spikes((x + 1, y + 27), tile_size)
+                    self.spikes.add(spike)
                 if cell == 'D':
                     door = Door((x + 2, y - 22), tile_size)
                     self.door.add(door)
+                if cell == 'K':
+                    key = Key((x + 12, y + 15), tile_size)
+                    self.key.add(key)
                 if cell == 'P':
                     player_sprite = Player((x, y))
                     self.player.add(player_sprite)
@@ -81,10 +92,14 @@ class Level:
         if settings.menu_state == 0:
             self.tiles.update(self.world_shift)
             self.door.update(self.world_shift)
-            self.player.update(self.tiles.sprites(), self.door.sprites())
+            self.key.update(self.world_shift)
+            self.spikes.update(self.world_shift)
+            self.player.update(self.tiles.sprites(), self.door.sprites(), self.spikes.sprites(), self.key.sprites())
             self.scroll_x()
+        self.spikes.draw(self.display_surface)
         self.tiles.draw(self.display_surface)
         self.door.draw(self.display_surface)
+        self.key.draw(self.display_surface)
 
         self.player.draw(self.display_surface)
 

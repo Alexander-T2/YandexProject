@@ -12,7 +12,6 @@ class Player(pygame.sprite.Sprite):
         self.image = self.animations['idle'][self.frame_index]
         self.rect = self.image.get_rect(topleft=pos)
         self.jump_counter = 1
-        self.dead_state = 0
 
         self.direction = pygame.math.Vector2(0, 0)
         self.speed = 6
@@ -68,11 +67,13 @@ class Player(pygame.sprite.Sprite):
     def jump(self):
         self.direction.y = self.jump_height
 
-    def update(self, tile_sprites, door_sprites):
-        self.get_input()  # Menu work starts here
+    def update(self, tile_sprites, door_sprites, spikes_sprites, key_sprites):
+        self.get_input()
         self.horizontal_movement_collision(tile_sprites)
         self.vertical_movement_collision(tile_sprites)
+        self.spike_touched(spikes_sprites)
         self.door_touched(door_sprites)
+        self.key_acquired(key_sprites)
 
     def horizontal_movement_collision(self, tile_sprites):
         self.rect.x += self.direction.x * self.speed
@@ -96,7 +97,21 @@ class Player(pygame.sprite.Sprite):
                     self.rect.top = sprite.rect.bottom
                     self.direction.y = 0
 
+    def spike_touched(self, spikes_sprites):
+        for sprite in spikes_sprites:
+            if sprite.rect.colliderect(self.rect):
+                settings.dead_state = 1
+
+    def key_acquired(self, key_sprites):
+        for sprite in key_sprites:
+            if sprite.rect.colliderect(self.rect):
+                settings.door_locked = 0
+
     def door_touched(self, door_sprites):
         for sprite in door_sprites:
             if sprite.rect.colliderect(self.rect):
-                settings.current_level += 1
+                if settings.door_locked != 1:
+                    settings.door_locked = 1
+                    settings.current_level += 1
+
+
