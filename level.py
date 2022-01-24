@@ -13,6 +13,7 @@ class Level:
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
         self.door = pygame.sprite.GroupSingle()
+        self.spikes = pygame.sprite.Group()
         self.menu = Menu()
         self.display_surface = surface
         self.setup_level(level_data)
@@ -46,12 +47,13 @@ class Level:
 
         if player_x < screen_width / 4 and direction_x < 0:
             self.world_shift = 6
+            #  player.speed = 0
         elif player_x > screen_width - (screen_width / 4) and direction_x > 0:
             self.world_shift = -6
-
+            #  player.speed = 0
         else:
             self.world_shift = 0
-            self.player.speed = 6
+            player.speed = 6
 
     def menu_check(self):
         for event in pygame.event.get():
@@ -71,6 +73,9 @@ class Level:
                     settings.menu_state = 0
                 elif (st[0] >= nd[0]+125) and (st[0] <= nd[0] + 375) and (st[1] >= 570) and (st[1]<=650):
                     sys.exit()
+
+    def restart(self):
+        pass
 
     def run(self):
         if settings.menu_state == 0:

@@ -12,6 +12,7 @@ class Player(pygame.sprite.Sprite):
         self.image = self.animations['idle'][self.frame_index]
         self.rect = self.image.get_rect(topleft=pos)
         self.jump_counter = 1
+        self.dead_state = 0
 
         self.direction = pygame.math.Vector2(0, 0)
         self.speed = 6
