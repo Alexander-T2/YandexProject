@@ -28,7 +28,7 @@ level_map2 = [
     '                                   ',
     '                                   ',
     '                                   ',
-    'X           X                     D',
+    'X           X                    KD',
     'X           X                     X',
     'X            XPX                  X',
     'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX']
@@ -47,7 +47,7 @@ level_map3 = [
     '            XXXX  XXXXX            ',
     'X           X         X           D',
     'X           X         X           X',
-    'X           X P     D X           X',
+    'X           X P  K  D X           X',
     'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX']
 
 tile_size = 64
@@ -56,5 +56,6 @@ current_level = 1
 menu_state = 0
 dead_state = 0
 door_locked = 1
+menu_choose = 0
 levels = {1: level_map1, 2: level_map2, 3: level_map3}
 screen_height = len(levels[current_level]) * tile_size

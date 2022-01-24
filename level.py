@@ -21,7 +21,7 @@ class Level:
         self.display_surface = surface
         self.setup_level(level_data)
         self.mc = (650, 150)
-        self.ma = r"graphics\background"
+        self.ma = r"graphics\menu"
         self.world_shift = 0
 
     def setup_level(self, layout):
@@ -58,10 +58,10 @@ class Level:
 
         if player_x < screen_width / 4 and direction_x < 0:
             self.world_shift = 6
-            #  player.speed = 0
+            player.speed = 0
         elif player_x > screen_width - (screen_width / 4) and direction_x > 0:
             self.world_shift = -6
-            #  player.speed = 0
+            player.speed = 0
         else:
             self.world_shift = 0
             player.speed = 6
@@ -76,17 +76,29 @@ class Level:
                     if settings.menu_state != 1:
                         settings.menu_state += 1
                     else:
-                        settings.menu_state = 0
+                        if settings.menu_choose == 0:
+                            settings.menu_state = 0
+                        else:
+                            settings.menu_choose = 0
             if event.type == pygame.MOUSEBUTTONUP:
-                st = event.pos
-                nd = self.mc
-                if (st[0] >= nd[0]+125) and (st[0] <= nd[0] + 375) and (st[1] >= 250) and (st[1]<=330):
-                    settings.menu_state = 0
-                elif (st[0] >= nd[0]+125) and (st[0] <= nd[0] + 375) and (st[1] >= 570) and (st[1]<=650):
-                    sys.exit()
-
-    def restart(self):
-        pass
+                if settings.menu_choose != 1:
+                    st = event.pos
+                    nd = self.mc
+                    if (st[0] >= nd[0]+125) and (st[0] <= nd[0] + 375) and (st[1] >= 250) and (st[1] <= 330):
+                        settings.menu_state = 0
+                    elif (st[0] >= nd[0]+125) and (st[0] <= nd[0] + 375) and (st[1] >= 410) and (st[1] <= 490):
+                        settings.menu_choose = 1
+                    elif (st[0] >= nd[0]+125) and (st[0] <= nd[0] + 375) and (st[1] >= 570) and (st[1] <= 650):
+                        sys.exit()
+                else:
+                    st = event.pos
+                    nd = self.mc
+                    if (st[0] >= nd[0] + 125) and (st[0] <= nd[0] + 375) and (st[1] >= 250) and (st[1] <= 330):
+                        settings.current_level = 1
+                    elif (st[0] >= nd[0] + 125) and (st[0] <= nd[0] + 375) and (st[1] >= 410) and (st[1] <= 490):
+                        settings.current_level = 2
+                    elif (st[0] >= nd[0] + 125) and (st[0] <= nd[0] + 375) and (st[1] >= 570) and (st[1] <= 650):
+                        settings.current_level = 3
 
     def run(self):
         if settings.menu_state == 0:
@@ -108,7 +120,20 @@ class Level:
             x = 125
             y = 80
             self.menu.open(self.display_surface, rf'{self.ma}\menu.png', (650, 150))
-            self.menu.open(self.display_surface, rf'{self.ma}\continue_btn.png', (self.mc[0]+x, self.mc[1]+st))
-            self.menu.open(self.display_surface, rf'{self.ma}\choose_btn.png', (self.mc[0]+x, self.mc[1]+2*y+st))
-            self.menu.open(self.display_surface, rf'{self.ma}\exit_btn.png', (self.mc[0]+x, self.mc[1]+4*y+st))
+            if settings.menu_choose == 1:
+                self.menu.open(self.display_surface, rf'{self.ma}\lvl1.png',
+                               (self.mc[0] + x, self.mc[1] + st))
+                self.menu.open(self.display_surface, rf'{self.ma}\lvl2.png',
+                               (self.mc[0] + x, self.mc[1] + 2 * y + st))
+                self.menu.open(self.display_surface, rf'{self.ma}\lvl3.png',
+                               (self.mc[0] + x, self.mc[1] + 4 * y + st))
+
+            else:
+                self.menu.open(self.display_surface, rf'{self.ma}\continue_btn.png',
+                               (self.mc[0] + x, self.mc[1] + st))
+                self.menu.open(self.display_surface, rf'{self.ma}\choose_btn.png',
+                               (self.mc[0] + x, self.mc[1] + 2 * y + st))
+                self.menu.open(self.display_surface, rf'{self.ma}\exit_btn.png',
+                               (self.mc[0] + x, self.mc[1] + 4 * y + st))
+
         self.menu_check()
