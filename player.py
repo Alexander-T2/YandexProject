@@ -103,9 +103,13 @@ class Player(pygame.sprite.Sprite):
                 settings.dead_state = 1
 
     def key_acquired(self, key_sprites):
+        key = None
         for sprite in key_sprites:
             if sprite.rect.colliderect(self.rect):
                 settings.door_locked = 0
+                key = sprite
+        if key:
+            key_sprites.empty()
 
     def door_touched(self, door_sprites):
         for sprite in door_sprites:

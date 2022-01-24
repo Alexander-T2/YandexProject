@@ -106,7 +106,7 @@ class Level:
             self.door.update(self.world_shift)
             self.key.update(self.world_shift)
             self.spikes.update(self.world_shift)
-            self.player.update(self.tiles.sprites(), self.door.sprites(), self.spikes.sprites(), self.key.sprites())
+            self.player.update(self.tiles.sprites(), self.door.sprites(), self.spikes.sprites(), self.key)
             self.scroll_x()
         self.spikes.draw(self.display_surface)
         self.tiles.draw(self.display_surface)

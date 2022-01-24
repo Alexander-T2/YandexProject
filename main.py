@@ -29,4 +29,4 @@ while True:
         level.setup_level(levels[settings.current_level])
 
     pygame.display.update()
-    clock.tick(60)
+    print(clock.tick(60))
