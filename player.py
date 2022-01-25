@@ -10,6 +10,7 @@ class Player(pygame.sprite.Sprite):
         self.frame_index = 0  # for animation
         self.animation_speed = 0.15
         self.image = self.animations['idle'][self.frame_index]
+        self.image.set_colorkey((255, 255, 255))
         self.rect = self.image.get_rect(topleft=pos)
         self.jump_counter = 1
 

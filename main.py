@@ -25,8 +25,9 @@ while True:
     screen.blit(back_ground, (0, 0))
     level.run()
     if settings.dead_state == 1:
+        settings.door_locked = 1
         settings.dead_state = 0
         level.setup_level(levels[settings.current_level])
 
     pygame.display.update()
-    print(clock.tick(60))
+    clock.tick(60)
