@@ -36,7 +36,7 @@ class Player(pygame.sprite.Sprite):
 
     def improt_run_particles(self):
         path = 'graphics/character/dust_particles/run'
-        self.dust_run_particals = import_folder(path)
+        self.dust_run_particles = import_folder(path)
 
     def animate(self):
         animation = self.animations[self.status]
@@ -57,10 +57,10 @@ class Player(pygame.sprite.Sprite):
     def run_dust_animation(self):
         if self.status == 'run' and self.on_ground:
             self.dust_frame_index += self.run_dust_animation_speed
-            if self.dust_frame_index >= len(self.dust_run_particals):
+            if self.dust_frame_index >= len(self.dust_run_particles):
                 self.dust_frame_index = 0
 
-            dust_particle = self.dust_run_particals[int(self.dust_frame_index)]
+            dust_particle = self.dust_run_particles[int(self.dust_frame_index)]
 
             if self.facing_right:
                 pos = self.rect.bottomleft - pygame.math.Vector2(6, 10)

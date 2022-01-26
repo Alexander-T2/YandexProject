@@ -101,19 +101,20 @@ class Level:
                         settings.current_level = 3
 
     def run(self):
-        if settings.menu_state == 0:
-            self.tiles.update(self.world_shift)
-            self.door.update(self.world_shift)
-            self.key.update(self.world_shift)
-            self.spikes.update(self.world_shift)
-            self.player.update(self.tiles.sprites(), self.door.sprites(), self.spikes.sprites(), self.key)
-            self.scroll_x()
-        self.spikes.draw(self.display_surface)
-        self.tiles.draw(self.display_surface)
-        self.door.draw(self.display_surface)
-        self.key.draw(self.display_surface)
+        if settings.current_level != 4:
+            if settings.menu_state == 0:
+                self.tiles.update(self.world_shift)
+                self.door.update(self.world_shift)
+                self.key.update(self.world_shift)
+                self.spikes.update(self.world_shift)
+                self.player.update(self.tiles.sprites(), self.door.sprites(), self.spikes.sprites(), self.key)
+                self.scroll_x()
+            self.spikes.draw(self.display_surface)
+            self.tiles.draw(self.display_surface)
+            self.door.draw(self.display_surface)
+            self.key.draw(self.display_surface)
 
-        self.player.draw(self.display_surface)
+            self.player.draw(self.display_surface)
 
         if settings.menu_state == 1:
             st = 100
