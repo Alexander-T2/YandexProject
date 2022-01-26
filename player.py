@@ -159,5 +159,3 @@ class Player(pygame.sprite.Sprite):
                 if settings.door_locked != 1:
                     settings.door_locked = 1
                     settings.current_level += 1
-
-
