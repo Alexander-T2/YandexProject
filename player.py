@@ -34,6 +34,9 @@ class Player(pygame.sprite.Sprite):
             full_path = character_path + animation
             self.animations[animation] = import_folder(full_path)
 
+    def improt_run_particles(self):
+        path = 'graphics/character/dust_particles/run'
+        self.dust_run_particals = import_folder(path)
 
     def animate(self):
         animation = self.animations[self.status]
@@ -51,6 +54,21 @@ class Player(pygame.sprite.Sprite):
 
         self.image.set_colorkey((255, 255, 255))
 
+    def run_dust_animation(self):
+        if self.status == 'run' and self.on_ground:
+            self.dust_frame_index += self.run_dust_animation_speed
+            if self.dust_frame_index >= len(self.dust_run_particals):
+                self.dust_frame_index = 0
+
+            dust_particle = self.dust_run_particals[int(self.dust_frame_index)]
+
+            if self.facing_right:
+                pos = self.rect.bottomleft - pygame.math.Vector2(6, 10)
+                self.display_surface.blit(dust_particle, pos)
+            else:
+                pos = self.rect.bottomleft - pygame.math.Vector2(6, 10)
+                flipped_particle = pygame.transform.flip(dust_particle, True, False)
+                self.display_surface.blit(flipped_particle, pos)
 
     def get_status(self):
         if self.direction.y < 0:
@@ -89,6 +107,7 @@ class Player(pygame.sprite.Sprite):
         self.get_input()
         self.get_status()
         self.animate()
+        self.run_dust_animation()
         self.horizontal_movement_collision(tile_sprites)
         self.vertical_movement_collision(tile_sprites)
         self.spike_touched(spikes_sprites)
