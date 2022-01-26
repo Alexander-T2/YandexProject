@@ -14,7 +14,6 @@ class Tile(pygame.sprite.Sprite):
                         9: r'graphics/tiles/tile9.png', 10: r'graphics/tiles/tile10.png',
                         11: r'graphics/tiles/tile11.png', 12: r'graphics/tiles/tile12.png'
                         }
-        print(settings.current_level)
         tile_path = self.sprites[randint(1, 4) + 4 * (settings.current_level - 1)]
         self.image = pygame.image.load(tile_path).convert_alpha()
         self.rect = self.image.get_rect(topleft=pos)

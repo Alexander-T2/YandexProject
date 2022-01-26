@@ -13,7 +13,7 @@ level_map1 = [
     'X                          K           X',
     'X           X                XXXXXXXXXXX',
     'X           X                  X        ',
-    'XP                         S            ',
+    'X    P                      S            ',
     'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX']
 
 level_map2 = [

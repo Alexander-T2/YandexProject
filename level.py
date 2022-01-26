@@ -48,7 +48,7 @@ class Level:
                     key = Key((x + 12, y + 15), tile_size)
                     self.key.add(key)
                 if cell == 'P':
-                    player_sprite = Player((x, y))
+                    player_sprite = Player((x, y), self.display_surface)
                     self.player.add(player_sprite)
 
     def scroll_x(self):
