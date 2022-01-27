@@ -54,13 +54,16 @@ level_map3 = [
     'X                X P  K  D X                                                                                    X',
     'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 ]
+extra_map = [None for i in range(16)]
+
 
 tile_size = 64
 screen_width = 1800
 current_level = 1
+game_started = 0
 menu_state = 0
 dead_state = 0
 door_locked = 1
 menu_choose = 0
 levels = {1: level_map1, 2: level_map2, 3: level_map3}
-screen_height = len(levels[current_level]) * tile_size
+screen_height = 16 * tile_size

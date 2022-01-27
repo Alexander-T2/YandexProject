@@ -72,6 +72,8 @@ class Level:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_f:
+                    settings.game_started = 1
                 if event.key == pygame.K_ESCAPE:
                     if settings.menu_state != 1:
                         settings.menu_state += 1
