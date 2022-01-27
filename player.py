@@ -10,7 +10,7 @@ class Player(pygame.sprite.Sprite):
         self.status = 'idle'
         self.facing_right = True
         self.frame_index = 0
-        self.animation_speed = 0.05
+        self.animation_speed = 0.15
         self.image = self.animations['idle'][self.frame_index]
         self.image.set_colorkey((255, 255, 255))
         self.rect = self.image.get_rect(topleft=pos)
@@ -156,6 +156,6 @@ class Player(pygame.sprite.Sprite):
     def door_touched(self, door_sprites):
         for sprite in door_sprites:
             if sprite.rect.colliderect(self.rect):
-                if settings.door_locked != 1:
+                if settings.door_locked != 1 or settings.current_level == 1:
                     settings.door_locked = 1
                     settings.current_level += 1
