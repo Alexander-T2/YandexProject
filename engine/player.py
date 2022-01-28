@@ -25,8 +25,8 @@ class Player(pygame.sprite.Sprite):
         self.gravity = 1
         self.jump_height = -22
         self.on_ground = False
-        self.start_x = 900
-        self.start_y = 66
+        self.start_x = self.rect.centerx + 100
+        self.start_y = self.rect.centery
 
     def import_character_assets(self):
         character_path = 'graphics/character/'
@@ -120,8 +120,7 @@ class Player(pygame.sprite.Sprite):
         self.button_pressed(button_sprites, lock_sprites)
 
     def horizontal_movement_collision(self, tile_sprites, lock_sprites):
-        if 0 < self.rect.centerx < 1800 - 50:
-            self.rect.x += self.direction.x * self.speed
+        self.rect.x += self.direction.x * self.speed
 
         for sprite in tile_sprites:
             if sprite.rect.colliderect(self.rect):
