@@ -25,6 +25,8 @@ class Player(pygame.sprite.Sprite):
         self.gravity = 1
         self.jump_height = -22
         self.on_ground = False
+        self.start_x = 1000
+        self.start_y = 100
 
     def import_character_assets(self):
         character_path = 'graphics/character/'
@@ -160,14 +162,30 @@ class Player(pygame.sprite.Sprite):
             self.on_ground = False
 
     def spike_touched(self, spikes_sprites):
-        spike = None
         for sprite in spikes_sprites:
             if sprite.rect.colliderect(self.rect):
                 if settings.current_level != 3:
                     settings.dead_state = 1
                 else:
                     if sprite.killable:
-                        pass
+                        sprite.image = pygame.image.load(r'graphics/spikes/spikes2.png').convert_alpha()
+                        sprite.image.set_colorkey((255, 255, 255))
+                        sprite.killable = 0
+                        self.rect.centerx = self.start_x
+                        self.rect.centery = self.start_y
+
+                    if self.direction.y > 0:
+                        self.rect.bottom = sprite.rect.top
+                        self.direction.y = 0
+                        self.on_ground = True
+                    elif self.direction.y < 0:
+                        self.rect.top = sprite.rect.bottom
+                        self.direction.y = 0
+                    else:
+                        if self.direction.x < 0:
+                            self.rect.left = sprite.rect.right
+                        elif self.direction.x > 0:
+                            self.rect.right = sprite.rect.left
 
     def button_pressed(self, button_sprites, lock_sprites):
         tmp = None
