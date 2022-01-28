@@ -105,7 +105,7 @@ class Player(pygame.sprite.Sprite):
     def jump(self):
         self.direction.y = self.jump_height
 
-    def update(self, tile_sprites, door_sprites, spikes_sprites, key_sprites):
+    def update(self, tile_sprites, door_sprites, spikes_sprites, key_sprites, button_sprites, lock_sprites):
         self.get_input()
         self.get_status()
         self.animate()
@@ -115,6 +115,8 @@ class Player(pygame.sprite.Sprite):
         self.spike_touched(spikes_sprites)
         self.door_touched(door_sprites)
         self.key_acquired(key_sprites)
+        self.lock_touched(lock_sprites)
+        self.button_pressed(button_sprites, lock_sprites)
 
     def horizontal_movement_collision(self, tile_sprites):
         self.rect.x += self.direction.x * self.speed
@@ -149,6 +151,16 @@ class Player(pygame.sprite.Sprite):
                     settings.dead_state = 1
                 else:
                     pass  # spike_walking
+
+    def lock_touched(self, lock_sprites):
+        pass
+
+    def button_pressed(self, button_sprites, lock_sprites):
+        for sprite in button_sprites:
+            if sprite.rect.colliderect(self.rect):
+                for i in lock_sprites:
+                    lock_path = r'graphics/lock/lock2.png'
+                    i.image = pygame.image.load(lock_path).convert_alpha()
 
     def key_acquired(self, key_sprites):
         key = None
