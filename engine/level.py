@@ -27,6 +27,7 @@ class Level:
         self.mc = (650, 150)
         self.ma = r"graphics\menu"
         self.world_shift = 0
+        self.tmp = ()
 
     def setup_level(self, layout):
         self.tiles.empty()
@@ -54,14 +55,16 @@ class Level:
                     key = Key((x + 12, y + 15))
                     self.key.add(key)
                 if cell == 'B':
-                    button = Button((x, y))
-                    self.button.add(button)
+                    self.tmp = (x, y)
                 if cell == 'L':
                     lock = Lock((x, y))
                     self.lock.add(lock)
                 if cell == 'P':
                     player_sprite = Player((x, y), self.display_surface)
                     self.player.add(player_sprite)
+            if settings.current_level == 2:
+                button = Button(self.tmp)
+                self.button.add(button, self.lock)
 
     def scroll_x(self):
         player = self.player.sprite

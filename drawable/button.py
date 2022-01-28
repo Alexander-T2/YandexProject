@@ -2,9 +2,9 @@ import pygame
 
 
 class Button(pygame.sprite.Sprite):
-    def __init__(self, pos):
+    def __init__(self, pos, spis=[]):
         super().__init__()
-        self.frame_index = 0  # for animation
+        self.spis = spis
         door_path = r'graphics/button/btnoff.png'
         self.image = pygame.image.load(door_path).convert_alpha()
         self.image.set_colorkey((255, 255, 255))
