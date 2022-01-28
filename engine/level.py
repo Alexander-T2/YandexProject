@@ -55,16 +55,14 @@ class Level:
                     key = Key((x + 12, y + 15))
                     self.key.add(key)
                 if cell == 'B':
-                    self.tmp = (x, y)
+                    button = Button(self.tmp)
+                    self.button.add(button)
                 if cell == 'L':
                     lock = Lock((x, y))
                     self.lock.add(lock)
                 if cell == 'P':
                     player_sprite = Player((x, y), self.display_surface)
                     self.player.add(player_sprite)
-            if settings.current_level == 2:
-                button = Button(self.tmp)
-                self.button.add(button, self.lock)
 
     def scroll_x(self):
         player = self.player.sprite

@@ -156,11 +156,12 @@ class Player(pygame.sprite.Sprite):
         pass
 
     def button_pressed(self, button_sprites, lock_sprites):
+        tmp = None
         for sprite in button_sprites:
             if sprite.rect.colliderect(self.rect):
-                for i in lock_sprites:
-                    lock_path = r'graphics/lock/lock2.png'
-                    i.image = pygame.image.load(lock_path).convert_alpha()
+                tmp = sprite
+        if tmp:
+            lock_sprites.empty()
 
     def key_acquired(self, key_sprites):
         key = None
