@@ -166,12 +166,15 @@ class Player(pygame.sprite.Sprite):
                 if settings.current_level != 3:
                     settings.dead_state = 1
                 else:
-                    pass  # spike_walking
+                    if sprite.killable:
+                        pass
 
     def button_pressed(self, button_sprites, lock_sprites):
         tmp = None
         for sprite in button_sprites:
             if sprite.rect.colliderect(self.rect):
+                sprite.image = pygame.image.load(r'graphics/button/btnon.png').convert_alpha()
+                sprite.image.set_colorkey((255, 255, 255))
                 tmp = sprite
         if tmp:
             lock_sprites.empty()
