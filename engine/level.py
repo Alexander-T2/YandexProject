@@ -6,7 +6,7 @@ from drawable.spikes import Spikes
 from drawable.key import Key
 from settings.settings import tile_size, screen_width
 from settings import settings
-from player import Player
+from engine.player import Player
 from drawable.menu import Menu
 from drawable.button import Button
 from drawable.lock import Lock
@@ -22,6 +22,7 @@ class Level:
         self.button = pygame.sprite.GroupSingle()
         self.lock = pygame.sprite.Group()
         self.menu = Menu()
+        self.start_pos = (0, 0)
         self.display_surface = surface
         self.setup_level(level_data)
         self.mc = (650, 150)
@@ -45,24 +46,25 @@ class Level:
                 if cell == 'X':
                     tile = Tile((x, y))
                     self.tiles.add(tile)
-                if cell == 'S':
+                elif cell == 'S':
                     spike = Spikes((x + 1, y + 27))
                     self.spikes.add(spike)
-                if cell == 'D':
+                elif cell == 'D':
                     door = Door((x + 2, y - 11))
                     self.door.add(door)
-                if cell == 'K':
+                elif cell == 'K':
                     key = Key((x + 12, y + 15))
                     self.key.add(key)
-                if cell == 'B':
-                    button = Button(self.tmp)
+                elif cell == 'B':
+                    button = Button((x, y))
                     self.button.add(button)
-                if cell == 'L':
+                elif cell == 'L':
                     lock = Lock((x, y))
                     self.lock.add(lock)
-                if cell == 'P':
+                elif cell == 'P':
                     player_sprite = Player((x, y), self.display_surface)
                     self.player.add(player_sprite)
+                    self.start_pos = (x, y)
 
     def scroll_x(self):
         player = self.player.sprite

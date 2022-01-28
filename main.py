@@ -15,7 +15,6 @@ backgrounds = {0: r'graphics/background/background0.png',
                3: r'graphics/background/background3.png',
                4: r'graphics/background/background4.png'}
 back_ground = pygame.image.load(backgrounds[settings.current_level])
-print(settings.current_level)
 font = pygame.font.Font(None, 50)
 colors = {1: (0, 0, 0), 2: (46, 9, 94), 3: (156, 85, 5)}
 y = 40

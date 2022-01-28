@@ -15,7 +15,7 @@ class Player(pygame.sprite.Sprite):
         self.image.set_colorkey((255, 255, 255))
         self.rect = self.image.get_rect(topleft=pos)
 
-        self.improt_run_particles()
+        self.import_run_particles()
         self.dust_frame_index = 0
         self.run_dust_animation_speed = 0.15
         self.display_surface = surface
@@ -34,7 +34,7 @@ class Player(pygame.sprite.Sprite):
             full_path = character_path + animation
             self.animations[animation] = import_folder(full_path)
 
-    def improt_run_particles(self):
+    def import_run_particles(self):
         path = 'graphics/character/dust_particles/run'
         self.dust_run_particles = import_folder(path)
 
@@ -110,15 +110,14 @@ class Player(pygame.sprite.Sprite):
         self.get_status()
         self.animate()
         self.run_dust_animation()
-        self.horizontal_movement_collision(tile_sprites)
-        self.vertical_movement_collision(tile_sprites)
+        self.horizontal_movement_collision(tile_sprites, lock_sprites)
+        self.vertical_movement_collision(tile_sprites, lock_sprites)
         self.spike_touched(spikes_sprites)
         self.door_touched(door_sprites)
         self.key_acquired(key_sprites)
-        self.lock_touched(lock_sprites)
         self.button_pressed(button_sprites, lock_sprites)
 
-    def horizontal_movement_collision(self, tile_sprites):
+    def horizontal_movement_collision(self, tile_sprites, lock_sprites):
         self.rect.x += self.direction.x * self.speed
 
         for sprite in tile_sprites:
@@ -128,9 +127,26 @@ class Player(pygame.sprite.Sprite):
                 elif self.direction.x > 0:
                     self.rect.right = sprite.rect.left
 
-    def vertical_movement_collision(self, tile_sprites):
+        for sprite in lock_sprites:
+            if sprite.rect.colliderect(self.rect):
+                if self.direction.x < 0:
+                    self.rect.left = sprite.rect.right
+                elif self.direction.x > 0:
+                    self.rect.right = sprite.rect.left
+
+    def vertical_movement_collision(self, tile_sprites, lock_sprites):
         self.apply_gravity()
         for sprite in tile_sprites:
+            if sprite.rect.colliderect(self.rect):
+                if self.direction.y > 0:
+                    self.rect.bottom = sprite.rect.top
+                    self.direction.y = 0
+                    self.on_ground = True
+                elif self.direction.y < 0:
+                    self.rect.top = sprite.rect.bottom
+                    self.direction.y = 0
+
+        for sprite in lock_sprites:
             if sprite.rect.colliderect(self.rect):
                 if self.direction.y > 0:
                     self.rect.bottom = sprite.rect.top
@@ -151,9 +167,6 @@ class Player(pygame.sprite.Sprite):
                     settings.dead_state = 1
                 else:
                     pass  # spike_walking
-
-    def lock_touched(self, lock_sprites):
-        pass
 
     def button_pressed(self, button_sprites, lock_sprites):
         tmp = None
