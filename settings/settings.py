@@ -2,21 +2,21 @@ import pygame
 
 
 level_map1 = [
-    'X             XXXXX                         XXXXXXX                 XXX                   X',
-    'X              XXX                           XXXXX                  XXX                   X',
-    'X               X                             XXX                   XXXK                  X',
-    'X                                              X                     X                    X',
+    'X             XXXXX                         XXXXXXX               XXK                     X',
+    'X              XXX                           XXXXX                XXX                     X',
+    'X               X                             XXX                 XXX                     X',
+    'X                                              X                   X                      X',
     'X                                                                        X                X',
     'X                                                                           X             X',
-    'X                                                                               X         X',
-    'X                                                                                     XXXXX',
+    'X                                                                               X        PX',
+    'X                                                                                 X   XXXXX',
     'X                                                                                    X    X',
     'X                                                                                     D    ',
     'X                                                                                   XXXXXXX',
-    'X                                                     P                            XXXXXXXX',
+    'X                                                                                  XXXXXXXX',
     'X                 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX            XXXXXXXXX',
     'X                XX                                                  XX          XXXXXXXXXX',
-    'X               XXXSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSXXX        XXXXXXXXXXX',
+    'X           P   XXXSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSXXX        XXXXXXXXXXX',
     'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 ]
 
