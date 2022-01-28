@@ -62,8 +62,8 @@ class Level:
                     lock = Lock((x, y))
                     self.lock.add(lock)
                 elif cell == 'P':
-                    player_sprite = Player((x, y), self.display_surface)
-                    self.player.add(player_sprite)
+                    self.player_sprite = Player((x, y), self.display_surface)
+                    self.player.add(self.player_sprite)
                     self.start_pos = (x, y)
 
     def scroll_x(self):
@@ -128,6 +128,7 @@ class Level:
                                    self.button, self.lock)
                 self.button.update(self.world_shift)
                 self.lock.update(self.world_shift)
+                self.player_sprite.start_x += self.world_shift
                 self.scroll_x()
             self.lock.draw(self.display_surface)
             self.button.draw(self.display_surface)

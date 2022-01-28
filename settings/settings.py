@@ -26,7 +26,7 @@ level_map2 = [
     'X                                                                                                               X',
     'X                                                                                                               X',
     'X                         S S       X    X                                                                      X',
-    'X     P                   XXX XXX       XXX   X                                                                 X',
+    'X                         XXX XXX       XXX   X                                                                 X',
     'X  XXXXXXX   X        S    X   X                X                                                               X',
     'X       BX    X      XXX                         X                                                              X',
     'XXXXLLLLLXXX     X    X                            X   XX                              X                        X',
@@ -35,12 +35,12 @@ level_map2 = [
     'X          X                                                                          X        X   XX           X',
     'X          X                                                                                            XXXXXXXXX',
     'X  SDS     X                                                                                            L       X',
-    'X  XXX                    S    S S S    SS      SSS        SS S                                         L   K   X',
+    'X  XXX             P      S    S S S    SS      SSS        SS S                                         L   K   X',
     'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX']
 
 level_map3 = [
-    'X                                                             s                                                   ',
-    'X                                                                                                               X',
+    'X                                                                                                                ',
+    'X                                                                                                                ',
     '                                                                                                                 ',
     '                                                                                                                 ',
     '                                                                                                                 ',
