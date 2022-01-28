@@ -1,5 +1,3 @@
-import pygame
-
 level_map1 = [
     'X             XXXXX                         XXXXXXX                 XXX                   X',
     'X              XXX                           XXXXX                  XXX                   X',
@@ -27,14 +25,14 @@ level_map2 = [
     'X                          S S                                                                                  X',
     'X                          XXX     X     X    X                                                                 X',
     'X            X         S                        X                                                               X',
-    'X                     XXX                          X                                                            X',
+    'X   B                 XXX                          X                                                            X',
     'XXXXXXXXXXX                                         X   XX                              X                       X',
     'X          X                                                X                       X                           X',
     'X          X                                                   X    X   X  X X X           XX                   X',
     'X          X                                                                          X        X   X            X',
-    'X          X                                                                     X                      XXXXXXXXX',
-    'X  SDS     X L                                                                   X                      L       X',
-    'X  XXX             PB     S    S S S    SS      SSS        SS S                  X                      L   K   X',
+    'X          X                                                                                            XXXXXXXXX',
+    'X  SDS     X                                                                                            L       X',
+    'X  XXX             P      S    S S S    SS      SSS        SS S                                         L   K   X',
     'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX']
 
 level_map3 = [
