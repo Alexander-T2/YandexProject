@@ -8,6 +8,8 @@ from settings.settings import tile_size, screen_width
 from settings import settings
 from player import Player
 from drawable.menu import Menu
+from drawable.button import Button
+from drawable.lock import Lock
 
 
 class Level:
@@ -17,6 +19,8 @@ class Level:
         self.door = pygame.sprite.GroupSingle()
         self.spikes = pygame.sprite.Group()
         self.key = pygame.sprite.GroupSingle()
+        self.button = pygame.sprite.GroupSingle()
+        self.lock = pygame.sprite.Group()
         self.menu = Menu()
         self.display_surface = surface
         self.setup_level(level_data)
@@ -30,23 +34,31 @@ class Level:
         self.door.empty()
         self.spikes.empty()
         self.key.empty()
+        self.button.empty()
+        self.lock.empty()
         for row_index, row in enumerate(layout):
             for col_index, cell in enumerate(row):
                 x = col_index * tile_size
                 y = row_index * tile_size
 
                 if cell == 'X':
-                    tile = Tile((x, y), tile_size)
+                    tile = Tile((x, y))
                     self.tiles.add(tile)
                 if cell == 'S':
-                    spike = Spikes((x + 1, y + 27), tile_size)
+                    spike = Spikes((x + 1, y + 27))
                     self.spikes.add(spike)
                 if cell == 'D':
-                    door = Door((x + 2, y - 22), tile_size)
+                    door = Door((x + 2, y - 11))
                     self.door.add(door)
                 if cell == 'K':
-                    key = Key((x + 12, y + 15), tile_size)
+                    key = Key((x + 12, y + 15))
                     self.key.add(key)
+                if cell == 'B':
+                    button = Button((x, y))
+                    self.button.add(button)
+                if cell == 'L':
+                    lock = Lock((x, y))
+                    self.lock.add(lock)
                 if cell == 'P':
                     player_sprite = Player((x, y), self.display_surface)
                     self.player.add(player_sprite)
@@ -110,7 +122,11 @@ class Level:
                 self.key.update(self.world_shift)
                 self.spikes.update(self.world_shift)
                 self.player.update(self.tiles.sprites(), self.door.sprites(), self.spikes.sprites(), self.key)
+                self.button.update(self.world_shift)
+                self.lock.update(self.world_shift)
                 self.scroll_x()
+            self.lock.draw(self.display_surface)
+            self.button.draw(self.display_surface)
             self.spikes.draw(self.display_surface)
             self.tiles.draw(self.display_surface)
             self.door.draw(self.display_surface)

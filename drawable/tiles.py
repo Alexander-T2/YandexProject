@@ -4,7 +4,7 @@ from settings import settings
 
 
 class Tile(pygame.sprite.Sprite):
-    def __init__(self, pos, size):
+    def __init__(self, pos):
         super().__init__()
         self.sprites = {
                         1: r'graphics/tiles/tile1.png', 2: r'graphics/tiles/tile2.png',

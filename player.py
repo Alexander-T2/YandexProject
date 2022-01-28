@@ -23,7 +23,7 @@ class Player(pygame.sprite.Sprite):
         self.direction = pygame.math.Vector2(0, 0)
         self.speed = 6
         self.gravity = 1
-        self.jump_height = -25
+        self.jump_height = -22
         self.on_ground = False
 
     def import_character_assets(self):
@@ -142,9 +142,13 @@ class Player(pygame.sprite.Sprite):
             self.on_ground = False
 
     def spike_touched(self, spikes_sprites):
+        spike = None
         for sprite in spikes_sprites:
             if sprite.rect.colliderect(self.rect):
-                settings.dead_state = 1
+                if settings.current_level != 3:
+                    settings.dead_state = 1
+                else:
+                    pass  # spike_walking
 
     def key_acquired(self, key_sprites):
         key = None
