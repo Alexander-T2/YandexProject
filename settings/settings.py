@@ -56,6 +56,8 @@ level_map3 = [
     'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 ]
 
+level_map4 = ['  ']
+
 tile_size = 64
 screen_width = 1800
 current_level = 1
@@ -64,7 +66,7 @@ menu_state = 0
 dead_state = 0
 door_locked = 1
 menu_choose = 0
-levels = {1: level_map1, 2: level_map2, 3: level_map3}
+levels = {1: level_map1, 2: level_map2, 3: level_map3, 4: level_map4}
 screen_height = 16 * tile_size
 
 stories = {1: ["I have been talented and lucky.",

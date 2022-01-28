@@ -21,9 +21,8 @@ y = 40
 
 while True:
     if settings.current_level != actual_level:
-        if settings.current_level != 4:
-            actual_level = settings.current_level
-            level.setup_level(levels[settings.current_level])
+        actual_level = settings.current_level
+        level.setup_level(levels[settings.current_level])
         back_ground = pygame.image.load(backgrounds[settings.current_level])
     screen.blit(back_ground, (0, 0))
     lines = settings.stories[settings.current_level]
