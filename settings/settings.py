@@ -1,3 +1,6 @@
+import pygame
+
+
 level_map1 = [
     'X             XXXXX                         XXXXXXX                 XXX                   X',
     'X              XXX                           XXXXX                  XXX                   X',
@@ -10,7 +13,7 @@ level_map1 = [
     'X                                                                                    X    X',
     'X                       X                                                             D    ',
     'X                                                                                   XXXXXXX',
-    'X                     P                                                            XXXXXXXX',
+    'X                                                     P                            XXXXXXXX',
     'X                 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX            XXXXXXXXX',
     'X                XX                                                  XX          XXXXXXXXXX',
     'X               XXXSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSXXX        XXXXXXXXXXX',
@@ -18,15 +21,15 @@ level_map1 = [
 ]
 
 level_map2 = [
-    'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    'XXXXXXXXX                                                        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
     'X                                                                                                               X',
     'X                                                                                                               X',
     'X                                                                                                               X',
-    'X                          S S                                                                                  X',
-    'X                          XXX     X     X    X                                                                 X',
-    'X            X         S                        X                                                               X',
-    'X   B                 XXX                          X                                                            X',
-    'XXXXXXXXXXX                                         X   XX                              X                       X',
+    'X                         S S                                                                                   X',
+    'X                         XXX     XXX    X    X                                                                 X',
+    'X            X      S      X       X            X                                                               X',
+    'X   B           X  XXX                             X                                                            X',
+    'XXXXXXXXXXX         X                               X   XX                              X                       X',
     'X          X                                                X                       X                           X',
     'X          X                                                   X    X   X  X X X           XX                   X',
     'X          X                                                                          X        X   X            X',
