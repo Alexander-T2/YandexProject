@@ -35,26 +35,26 @@ level_map2 = [
     'X          X                                                                          X        X   XX           X',
     'X          X                                                                                            XXXXXXXXX',
     'X  SDS     X                                                                                            L       X',
-    'X  XXX             P      S    S S S    SS      SSS        SS S                                         L   K   X',
+    'X  XXXK             P     S    S S S    SS      SSS        SS S                                         L   K   X',
     'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX']
 
 level_map3 = [
-    'X                                                                                             ',
-    'X                                                                                             ',
-    '                                                                                              ',
-    '                                                                                              ',
-    '                                             K                                                ',
-    '                                            XXX         S                                     ',
-    '                                         X                                                    ',
-    '                                  X  X                                                        ',
-    '                          X   X                                                               ',
-    '                       X                                                                      ',
-    'X                   X                                                                        D',
-    'X          P    X                                                                            X',
-    'X         XXX                                                                               XX',
-    'X                                                                                          XXX',
-    'XSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSXXXX',
-    'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    'X                                                                     ',
+    'X                                                                     ',
+    '                                                                      ',
+    '                                                                      ',
+    '                                             K                        ',
+    '                                            XXX         S             ',
+    '                                         X                            ',
+    '                                  X  X                                ',
+    '                          X   X                                       ',
+    '                       X                                              ',
+    'X                   X                                                D',
+    'X          P    X                                                    X',
+    'X         XXX                                                       XX',
+    'X                                                                  XXX',
+    'XSSSSSSSSSSS  S KDSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSXXXX',
+    'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 ]
 
 level_map4 = ['  ']
