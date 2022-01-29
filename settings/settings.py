@@ -46,14 +46,14 @@ level_map3 = [
     '                                             K                        ',
     '                                            XXX         S             ',
     '                                         X                            ',
-    '                                  X  X                                ',
-    '                          X   X                                       ',
-    '                       X                                              ',
-    'X                   X                                                D',
+    '                                  X  X                                X',
+    '                          X   X                                       X',
+    '                       X                                              X',
+    'X                   X                                                DX',
     'X          P    X                                                    X',
     'X         XXX                                                       XX',
     'X                                                                  XXX',
-    'XSSSSSSSSSSS  S KDSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSXXXX',
+    'XSSSSSSSSSSS  S   SSSSSSSSSS  SSS SSSSSSSSSSSSSS  SSSSSSSSS SSSSSSXXXX',
     'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 ]
 
